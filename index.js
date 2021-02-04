@@ -41,7 +41,7 @@ app.post('/webhook/', function(req, res){
                 buttonMenu(sender);
             } else if (text.toLowerCase() === "other") {
                 sendText(sender, "We will respond to you  as soon as we can");
-            } else if (text.toLowerCase() === 'pay') {
+            } else if (text.toLowerCase() === "pay") {
                 sendText(sender, "Your bill will be brought to you shortly");
             } else {
                 sendText(sender, "To visit the menu list type 'order' or to talk to a personnel type 'other' or 'pay' to ask for your bill");
