@@ -26,7 +26,7 @@ app.get(`/webhook`, (req, res) => {
     }
 })
 
-app.post('/webhook/', function(req, res){
+app.post('/webhook', function(req, res){
     let messaging_events = req.body.entry[0].messaging;
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
@@ -53,7 +53,7 @@ app.post('/webhook/', function(req, res){
             if (IsJsonString(postback.payload)) {
                 const payload = JSON.parse(postback.payload);
 
-                if (payload.type === "Get Started") {
+                if (payload.type === "greetings") {
                     sendText(sender, "Welcome to our restuarant \nType 'order' to view our menu list");
                 }
             } else if (postback.title === "Juice") {
@@ -94,6 +94,7 @@ function buttonMenu(sender) {
       }`;
 
       request({
+        url: "https://graph.facebook.com/v2.6/me/messages",
         qs: { access_token: ACCESS_TOKEN },
         method: "POST",
         json: {
@@ -160,6 +161,7 @@ function Juice(sender) {
           }
       }`;
       request({
+        url: "https://graph.facebook.com/v2.6/me/messages",
         qs: { access_token: ACCESS_TOKEN },
         method: "POST",
         json: {
@@ -177,6 +179,7 @@ function Juice(sender) {
 function sendText(sender, text) {
     let message_data = { text: text };
     request({
+        url: "https://graph.facebook.com/v2.6/me/messages",
         qs: { access_token: ACCESS_TOKEN },
         method: "POST",
         json: {
