@@ -53,7 +53,7 @@ app.post('/webhook/', function(req, res){
             if (IsJsonString(postback.payload)) {
                 const payload = JSON.parse(postback.payload);
 
-                if (payload.type === "greetings") {
+                if (payload.type === "Get Started") {
                     sendText(sender, "Welcome to our restuarant \nType 'order' to view our menu list");
                 }
             } else if (postback.title === "Juice") {
