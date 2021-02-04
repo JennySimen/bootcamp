@@ -53,11 +53,11 @@ app.post('/webhook', function(req, res){
             if (IsJsonString(postback.payload)) {
                 const payload = JSON.parse(postback.payload);
 
-                if (payload.type === "greetings") {
+                if (payload.type === "Greeting") {
                     sendText(sender, "Welcome to our restuarant \nType 'order' to view our menu list");
                 }
             } else if (postback.title === "Juice") {
-                glassesMenu(sender);
+                juiceMenu(sender);
             }
         }
 
@@ -109,7 +109,7 @@ function buttonMenu(sender) {
         }
     });
 } 
-function Juice(sender) {
+function juiceMenu(sender) {
     const firstData = `{
         "attachment": {
             "type": "template",
