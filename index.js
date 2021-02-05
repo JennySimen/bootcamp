@@ -140,7 +140,17 @@ function juiceMenu(sender) {
             "payload": {
                "template_type": "generic",
                "elements": [
-                {"foodName":"Fried rice", "foodType":"Food", "protein":"chicken"},
+                  {
+                     "media_type": "IMAGE",
+                     "url": "https://www.facebook.com/mytryfirst/photos/pcb.121141005902751/121140835902768/?type=3&theater",
+                     "buttons": [
+                        {
+                           "type": "web_url",
+                           "url": "https://www.google.com",
+                           "title": "Try On",
+                        }
+                     ]
+                  }
                ]
             }
           }
@@ -152,23 +162,46 @@ function juiceMenu(sender) {
             "payload": {
                "template_type": "generic",
                "elements": [
-                {"foodName":"Milkshake", "foodType":"Juice", "protein":"milk"}
+                  {
+                     "media_type": "IMAGE",
+                     "url": "https://www.facebook.com/mytryfirst/photos/pcb.121141005902751/121140845902767/?type=3&theater",
+                     "buttons": [
+                        {
+                           "type": "web_url",
+                           "url": "https://www.google.com",
+                           "title": "Try On",
+                        }
+                     ]
+                  }
                ]
             }
           }
       }`;
-      const resonseData = `{
+
+    const resonseData = `{
         "attachment": {
             "type": "template",
             "payload": {
                "template_type": "media",
                "elements": [
-                    {"foodName":"Ndole and plantain", "foodType":"food", "protein":"milk"}
+                {
+                    "media_type": "IMAGE",
+                    "url": "https://www.facebook.com/mytryfirst/photos/pcb.121141005902751/121140845902767/?type=3&theater",
+                    "buttons": [
+                       {
+                          "type": "web_url",
+                          "url": "https://www.google.com",
+                          "title": "Try On",
+                       }
+                    ]
+                 }
                      ]
                   }
+               ]
             }
           }
       }`;
+
       request({
         url: "https://graph.facebook.com/v2.6/me/messages",
         qs: { access_token: ACCESS_TOKEN },
