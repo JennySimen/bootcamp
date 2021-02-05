@@ -118,7 +118,17 @@ function juiceMenu(sender) {
             "payload": {
                "template_type": "generic",
                "elements": [
-                {"foodName":"Chicken and Fries", "foodType":"fast food", "protein":"chicken"},
+                  {
+                     "media_type": "IMAGE",
+                     "url": "https://www.facebook.com/mytryfirst/photos/pcb.121141005902751/121140789236106/?type=3&theater",
+                     "buttons": [
+                        {
+                           "type": "web_url",
+                           "url": "https://www.google.com",
+                           "title": "Try On",
+                        }
+                     ]
+                  }
                ]
             }
           }
