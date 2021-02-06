@@ -236,11 +236,6 @@ function FoodMenu(sender) {
                     "type":"postback",
                     "title":"garri and eru",
                     "payload":"garri and eru"
-                },
-                {
-                    "type":"postback",
-                    "title":"hot pot",
-                    "payload":"hot pot"
                 }
               ]
             }
