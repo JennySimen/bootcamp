@@ -112,7 +112,7 @@ function buttonMenu(sender) {
         }
     });
 } 
- console.log(event)
+
 if (event.message && event.message.text) {
     let choice = event.message.text;
 
