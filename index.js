@@ -49,9 +49,9 @@ app.post('/webhook', function(req, res){
             }  else if (text.toLowerCase() === "juice") {
                 juiceMenu(sender);
             } else if (text.toLowerCase() === "food") {
-                sendText(sender, "We will respond to you  as soon as we can");
+                FoodMenu(sender);
             } else if (text.toLowerCase() === "fast food") {
-                sendText(sender, "Your bill will be brought to you shortly");
+                fastfoodMenu(sender);
             } else if (text.toLowerCase() === "yogourt") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
             }  else if (text.toLowerCase() === "beverage") {
@@ -59,15 +59,12 @@ app.post('/webhook', function(req, res){
             }  else if (text.toLowerCase() === "milk shake") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
             }  else if (text.toLowerCase() === "yes") {
-                sendText(sender, "Your order will be right up");
-            }  else if (text.toLowerCase() === "no") {
                 buttonMenu(sender);
+            }  else if (text.toLowerCase() === "no") {
+                sendText(sender, "Great! you order will be right up");
             }
-            //  else {
-            //     sendText(sender, "Type the letter corresponding to your order");
-            // } 
              else {
-                sendText(sender, "To visit the menu list type 'order' or to talk to a personnel type 'other' or 'pay' to ask for your bill");
+                sendText(sender, "Welcome!, \nTo visit the menu list type 'order' \nor to talk to a personnel type 'other'\n or 'pay' to ask for your bill");
             }
         }
 
@@ -295,6 +292,57 @@ function FoodMenu(sender) {
     });
 }
 
+function fastfoodMenu(sender) {
+    const thirdData = `{
+        "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"button",
+              "text":"Make an order",
+              "buttons":[
+                {
+                    "type":"postback",
+                    "title":"tfc",
+                    "payload":"tfc"
+                }
+              ]
+            }
+          }
+      }`;
+
+      const resonseData  = `{
+        "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"button",
+              "text":"Make an order",
+              "buttons":[
+                {
+                    "type":"postback",
+                    "title":"tfc",
+                    "payload":"tfc"
+                }
+              ]
+            }
+          }
+      }`;
+
+      request({
+        url: "https://graph.facebook.com/v2.6/me/messages",
+        qs: { access_token: ACCESS_TOKEN },
+        method: "POST",
+        json: {
+            recipient: { id: sender },
+            message: resonseData
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log("Sending error", error);
+        } else if (response.body.error) {
+            console.log("response body error", response.body.error);
+        }
+    });
+}
 function sendText(sender, text) {
     let message_data = { text: text };
     request({
