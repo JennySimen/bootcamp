@@ -164,6 +164,33 @@ function juiceMenu(sender) {
             }
           }
       }`;
+
+      const resonseData = `{
+        "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"button",
+              "text":"Make an order",
+              "buttons":[
+                {
+                    "type":"postback",
+                    "title":"yogourt",
+                    "payload":"a) yogourt"
+                },
+                {
+                    "type":"postback",
+                    "title":"beverage",
+                    "payload":"b) beverage"
+                },
+                {
+                    "type":"postback",
+                    "title":"Fruit juice",
+                    "payload":"c) fruit juice"
+                }
+              ]
+            }
+          }
+      }`;
       
       request({
         url: "https://graph.facebook.com/v2.6/me/messages",
