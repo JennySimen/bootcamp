@@ -56,7 +56,7 @@ app.post('/webhook', function(req, res){
                 sendText(sender, "Anything else? type 'yes' or 'no'");
             }  else if (text.toLowerCase() === "beverage") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
-            }  else if (text.toLowerCase() === "milk shake") {
+            }  else if (text.toLowerCase() === "fruit juice") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
             }  else if (text.toLowerCase() === "yes") {
                 buttonMenu(sender);
