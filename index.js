@@ -46,7 +46,17 @@ app.post('/webhook', function(req, res){
                 sendText(sender, "We will respond to you  as soon as we can");
             } else if (text.toLowerCase() === "pay") {
                 sendText(sender, "Your bill will be brought to you shortly");
-            } else {
+            }  else if (text.toLowerCase() === "juice") {
+                juiceMenu(sender);
+            } else if (text.toLowerCase() === "food") {
+                sendText(sender, "We will respond to you  as soon as we can");
+            } else if (text.toLowerCase() === "fast food") {
+                sendText(sender, "Your bill will be brought to you shortly");
+            }
+            //  else {
+            //     sendText(sender, "Type the letter corresponding to your order");
+            // } 
+             else {
                 sendText(sender, "To visit the menu list type 'order' or to talk to a personnel type 'other' or 'pay' to ask for your bill");
             }
         }
@@ -113,19 +123,19 @@ function buttonMenu(sender) {
     });
 } 
 
-if (event.message && event.message.text) {
-    let choice = event.message.text;
+// if (event.message && event.message.text) {
+//     let choice = event.message.text;
 
-    if (choice.toLowerCase() === "juice") {
-        juiceMenu(sender);
-    } else if (choice.toLowerCase() === "food") {
-        sendText(sender, "We will respond to you  as soon as we can");
-    } else if (choice.toLowerCase() === "fast food") {
-        sendText(sender, "Your bill will be brought to you shortly");
-    } else {
-        sendText(sender, "Type the letter corresponding to your order");
-    }
-}
+//     if (choice.toLowerCase() === "juice") {
+//         juiceMenu(sender);
+//     } else if (choice.toLowerCase() === "food") {
+//         sendText(sender, "We will respond to you  as soon as we can");
+//     } else if (choice.toLowerCase() === "fast food") {
+//         sendText(sender, "Your bill will be brought to you shortly");
+//     } else {
+//         sendText(sender, "Type the letter corresponding to your order");
+//     }
+// }
 
 function juiceMenu(sender) {
     const firstData = `{
