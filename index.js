@@ -112,15 +112,15 @@ function buttonMenu(sender) {
         }
     });
 } 
-
+ console.log(event)
 if (event.message && event.message.text) {
-    let text = event.message.text;
+    let choice = event.message.text;
 
-    if (text.toLowerCase() === "juice") {
+    if (choice.toLowerCase() === "juice") {
         juiceMenu(sender);
-    } else if (text.toLowerCase() === "food") {
+    } else if (choice.toLowerCase() === "food") {
         sendText(sender, "We will respond to you  as soon as we can");
-    } else if (text.toLowerCase() === "fast food") {
+    } else if (choice.toLowerCase() === "fast food") {
         sendText(sender, "Your bill will be brought to you shortly");
     } else {
         sendText(sender, "Type the letter corresponding to your order");
