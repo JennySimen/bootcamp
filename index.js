@@ -62,7 +62,15 @@ app.post('/webhook', function(req, res){
                 buttonMenu(sender);
             }  else if (text.toLowerCase() === "no") {
                 sendText(sender, "Great! you order will be right up");
-            }
+            } else if (text.toLowerCase() === "tfc") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
+            } else if (text.toLowerCase() === "chicken and fries") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
+            } else if (text.toLowerCase() === "chicken and dodo") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
+            } else if (text.toLowerCase() === "garri and eru") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
+            } 
              else {
                 sendText(sender, "Welcome!, \nTo visit the menu list type 'order' \nor to talk to a personnel type 'other'\n or 'pay' to ask for your bill");
             }
@@ -265,11 +273,6 @@ function FoodMenu(sender) {
                     "type":"postback",
                     "title":"garri and eru",
                     "payload":"garri and eru"
-                },
-                {
-                    "type":"postback",
-                    "title":"hot pot",
-                    "payload":"hot pot"
                 }
               ]
             }
