@@ -52,6 +52,16 @@ app.post('/webhook', function(req, res){
                 sendText(sender, "We will respond to you  as soon as we can");
             } else if (text.toLowerCase() === "fast food") {
                 sendText(sender, "Your bill will be brought to you shortly");
+            } else if (text.toLowerCase() === "yogourt") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
+            }  else if (text.toLowerCase() === "beverage") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
+            }  else if (text.toLowerCase() === "milk shake") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
+            }  else if (text.toLowerCase() === "yes") {
+                sendText(sender, "Your order will be right up");
+            }  else if (text.toLowerCase() === "no") {
+                buttonMenu(sender);
             }
             //  else {
             //     sendText(sender, "Type the letter corresponding to your order");
@@ -123,20 +133,6 @@ function buttonMenu(sender) {
     });
 } 
 
-// if (event.message && event.message.text) {
-//     let choice = event.message.text;
-
-//     if (choice.toLowerCase() === "juice") {
-//         juiceMenu(sender);
-//     } else if (choice.toLowerCase() === "food") {
-//         sendText(sender, "We will respond to you  as soon as we can");
-//     } else if (choice.toLowerCase() === "fast food") {
-//         sendText(sender, "Your bill will be brought to you shortly");
-//     } else {
-//         sendText(sender, "Type the letter corresponding to your order");
-//     }
-// }
-
 function juiceMenu(sender) {
     const firstData = `{
         "attachment":{
@@ -175,17 +171,17 @@ function juiceMenu(sender) {
                 {
                     "type":"postback",
                     "title":"yogourt",
-                    "payload":"a) yogourt"
+                    "payload":"yogourt"
                 },
                 {
                     "type":"postback",
                     "title":"beverage",
-                    "payload":"b) beverage"
+                    "payload":"beverage"
                 },
                 {
                     "type":"postback",
                     "title":"Fruit juice",
-                    "payload":"c) fruit juice"
+                    "payload":"fruit juice"
                 }
               ]
             }
@@ -208,6 +204,97 @@ function juiceMenu(sender) {
         }
     });
 }
+function FoodMenu(sender) {
+    const secondData = `{
+        "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"button",
+              "text":"Make an order",
+              "buttons":[
+                {
+                    "type":"postback",
+                    "title":"chicken and fries",
+                    "payload":"chicken and fries"
+                },
+                {
+                    "type":"postback",
+                    "title":"chicken and dodo",
+                    "payload":"chicken and dodo"
+                },
+                {
+                    "type":"postback",
+                    "title":"fied rice",
+                    "payload":"fried rice"
+                },
+                {
+                    "type":"postback",
+                    "title":"garri and eru",
+                    "payload":"garri and eru"
+                },
+                {
+                    "type":"postback",
+                    "title":"hot pot",
+                    "payload":"hot pot"
+                }
+              ]
+            }
+          }
+      }`;
+
+      const resonseData = `{
+        "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"button",
+              "text":"Make an order",
+              "buttons":[
+                {
+                    "type":"postback",
+                    "title":"chicken and fries",
+                    "payload":"chicken and fries"
+                },
+                {
+                    "type":"postback",
+                    "title":"chicken and dodo",
+                    "payload":"chicken and dodo"
+                },
+                {
+                    "type":"postback",
+                    "title":"fied rice",
+                    "payload":"fried rice"
+                },
+                {
+                    "type":"postback",
+                    "title":"garri and eru",
+                    "payload":"garri and eru"
+                },
+                {
+                    "type":"postback",
+                    "title":"hot pot",
+                    "payload":"hot pot"
+                }
+              ]
+            }
+          }
+      }`;
+      request({
+        url: "https://graph.facebook.com/v2.6/me/messages",
+        qs: { access_token: ACCESS_TOKEN },
+        method: "POST",
+        json: {
+            recipient: { id: sender },
+            message: resonseData
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log("Sending error", error);
+        } else if (response.body.error) {
+            console.log("response body error", response.body.error);
+        }
+    });
+}
+
 function sendText(sender, text) {
     let message_data = { text: text };
     request({
@@ -234,53 +321,3 @@ function IsJsonString(str) {
     }
     return true;
 }
-
-// app.listen(port, () => console.log('The app is running on port ' + port));
-        
-        
-// function processPostback(event) {
-//     let senderId = event.sender.id;
-//     let payload = event.postback.payload;
-
-//     if (payload === "Greeting") {
-//       // Get user's first name from the User Profile API
-//       // and include it in the greeting
-//       request({
-//         url: "https://graph.facebook.com/v2.6/" + senderId,
-//         qs: {
-//           access_token: process.env.PAGE_ACCESS_TOKEN,
-//           fields: "first_name"
-//         },
-//         method: "GET"
-//       }, function(error, response, body) {
-//         let greeting = "";
-//         if (error) {
-//           console.log("Error getting user's name: " +  error);
-//         } else {
-//           let bodyObj = JSON.parse(body);
-//           name = bodyObj.first_name;
-//           greeting = "Hi " + name + ". ";
-//         }
-//         let message = greeting + "This is a test bot i am building for my bot development practice";
-//         sendMessage(senderId, {text: message});
-//       });
-//     }
-//   }
-
-//   // sends message to user
-// function sendMessage(recipientId, message) {
-//     request({
-//       url: "https://graph.facebook.com/v2.6/me/messages",
-//       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-//       method: "POST",
-//       json: {
-//         recipient: {id: recipientId},
-//         message: message,
-//       }
-//     }, function(error, response, body) {
-//       if (error) {
-//         console.log("Error sending message: " + response.error);
-//       }
-//     });
-//   }
-  
