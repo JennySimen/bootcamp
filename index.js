@@ -54,21 +54,29 @@ app.post('/webhook', function(req, res){
                 fastfoodMenu(sender);
             } else if (text.toLowerCase() === "yogourt") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
+                sendText(sender, "Anything else? type 'yes' or 'no'");
             }  else if (text.toLowerCase() === "beverage") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
+                sendText(sender, "Anything else? type 'yes' or 'no'");
             }  else if (text.toLowerCase() === "fruit juice") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
                 sendText(sender, "Anything else? type 'yes' or 'no'");
             }  else if (text.toLowerCase() === "yes") {
                 buttonMenu(sender);
             }  else if (text.toLowerCase() === "no") {
                 sendText(sender, "Great! you order will be right up");
+                sendText(sender, "Great! you order will be right up");
             } else if (text.toLowerCase() === "tfc") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
                 sendText(sender, "Anything else? type 'yes' or 'no'");
             } else if (text.toLowerCase() === "chicken and fries") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
+                sendText(sender, "Anything else? type 'yes' or 'no'");
             } else if (text.toLowerCase() === "fried rice") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
+                sendText(sender, "Anything else? type 'yes' or 'no'");
             } else if (text.toLowerCase() === "garri and eru") {
+                sendText(sender, "Anything else? type 'yes' or 'no'");
                 sendText(sender, "Anything else? type 'yes' or 'no'");
             } 
              else {
