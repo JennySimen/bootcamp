@@ -112,97 +112,49 @@ function buttonMenu(sender) {
         }
     });
 } 
+
+if (event.message && event.message.text) {
+    let text = event.message.text;
+
+    if (text.toLowerCase() === "juice") {
+        juiceMenu(sender);
+    } else if (text.toLowerCase() === "food") {
+        sendText(sender, "We will respond to you  as soon as we can");
+    } else if (text.toLowerCase() === "fast food") {
+        sendText(sender, "Your bill will be brought to you shortly");
+    } else {
+        sendText(sender, "Type the letter corresponding to your order");
+    }
+}
+
 function juiceMenu(sender) {
     const firstData = `{
-        "attachment": {
-            "type": "template",
-            "payload": {
-               "template_type": "generic",
-               "elements": [
-                  {
-                     "media_type": "IMAGE",
-                     "url": "https://www.facebook.com/mytryfirst/photos/pcb.121141005902751/121140789236106/?type=3&theater",
-                     "buttons": [
-                        {
-                           "type": "web_url",
-                           "url": "https://www.google.com",
-                           "title": "Try On",
-                        }
-                     ]
-                  }
-               ]
-            }
-          }
-      }`;
-
-    const secondData = `{
-        "attachment": {
-            "type": "template",
-            "payload": {
-               "template_type": "generic",
-               "elements": [
-                  {
-                     "media_type": "IMAGE",
-                     "url": "https://www.facebook.com/mytryfirst/photos/pcb.121141005902751/121140835902768/?type=3&theater",
-                     "buttons": [
-                        {
-                           "type": "web_url",
-                           "url": "https://www.google.com",
-                           "title": "Try On",
-                        }
-                     ]
-                  }
-               ]
-            }
-          }
-      }`;
-
-    const thirdData = `{
-        "attachment": {
-            "type": "template",
-            "payload": {
-               "template_type": "generic",
-               "elements": [
-                  {
-                     "media_type": "IMAGE",
-                     "url": "https://www.facebook.com/mytryfirst/photos/pcb.121141005902751/121140845902767/?type=3&theater",
-                     "buttons": [
-                        {
-                           "type": "web_url",
-                           "url": "https://www.google.com",
-                           "title": "Try On",
-                        }
-                     ]
-                  }
-               ]
-            }
-          }
-      }`;
-
-    const resonseData = `{
-        "attachment": {
-            "type": "template",
-            "payload": {
-               "template_type": "media",
-               "elements": [
+        "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"button",
+              "text":"Make an order",
+              "buttons":[
                 {
-                    "media_type": "IMAGE",
-                    "url": "https://www.facebook.com/mytryfirst/photos/pcb.121141005902751/121140845902767/?type=3&theater",
-                    "buttons": [
-                       {
-                          "type": "web_url",
-                          "url": "https://www.google.com",
-                          "title": "Try On",
-                       }
-                    ]
-                 }
-                     ]
-                  }
-               ]
+                    "type":"postback",
+                    "title":"yogourt",
+                    "payload":"a) yogourt"
+                },
+                {
+                    "type":"postback",
+                    "title":"beverage",
+                    "payload":"b) beverage"
+                },
+                {
+                    "type":"postback",
+                    "title":"Fruit juice",
+                    "payload":"c) fruit juice"
+                }
+              ]
             }
           }
       }`;
-
+      
       request({
         url: "https://graph.facebook.com/v2.6/me/messages",
         qs: { access_token: ACCESS_TOKEN },
