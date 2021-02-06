@@ -66,7 +66,7 @@ app.post('/webhook', function(req, res){
                 sendText(sender, "Anything else? type 'yes' or 'no'");
             } else if (text.toLowerCase() === "chicken and fries") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
-            } else if (text.toLowerCase() === "chicken and dodo") {
+            } else if (text.toLowerCase() === "fried rice") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
             } else if (text.toLowerCase() === "garri and eru") {
                 sendText(sender, "Anything else? type 'yes' or 'no'");
@@ -224,7 +224,7 @@ function FoodMenu(sender) {
                 },
                 {
                     "type":"postback",
-                    "title":"fied rice",
+                    "title":"fried rice",
                     "payload":"fried rice"
                 },
                 {
