@@ -224,11 +224,6 @@ function FoodMenu(sender) {
                 },
                 {
                     "type":"postback",
-                    "title":"chicken and dodo",
-                    "payload":"chicken and dodo"
-                },
-                {
-                    "type":"postback",
                     "title":"fied rice",
                     "payload":"fried rice"
                 },
@@ -253,11 +248,6 @@ function FoodMenu(sender) {
                     "type":"postback",
                     "title":"chicken and fries",
                     "payload":"chicken and fries"
-                },
-                {
-                    "type":"postback",
-                    "title":"chicken and dodo",
-                    "payload":"chicken and dodo"
                 },
                 {
                     "type":"postback",
